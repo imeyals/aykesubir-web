@@ -1,0 +1,110 @@
+---
+import config from "@/config/config.json";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry } from "astro:content";
+
+const { params } = config;
+const contactIndex = await getEntry("contact", "-index");
+const { title, meta_title, description, connect, card } = contactIndex.data;
+---
+
+<Base title={title} meta_title={meta_title} description={description}>
+  <PageHeader title="Contact Us" />
+  <section class="section bg-section">
+    <div class="container">
+      <h1 class="mb-10 text-center font-bold">{title}</h1>
+      <div class="row g-4 lg:items-center lg:justify-between">
+        {/* left side */}
+        <div class="col-10 lg:col-6">
+          <form action={params.contact_form_action} method="POST" class="">
+            <div class="mb-10">
+              <label for="name" class="form-label">
+                Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="name"
+                name="name"
+                class="form-input w-full border-0 border-b-2 border-border focus:border-primary focus:ring-transparent"
+                placeholder="name"
+                type="text"
+              />
+            </div>
+            <div class="mb-10">
+              <label for="email" class="form-label">
+                Email <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                name="email"
+                class="form-input w-full border-0 border-b-2 border-border focus:border-primary focus:ring-transparent"
+                placeholder="john.doe@email.com"
+                type="email"
+              />
+            </div>
+            <div class="mb-10">
+              <label for="message" class="form-label">
+                Message <span class="text-red-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-input w-full border-0 border-b-2 border-border focus:border-primary focus:ring-transparent"
+                placeholder="Write here your details message..."
+                rows={4}></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"> Send message</button>
+          </form>
+        </div>
+
+        {/* right side */}
+        <div class="col-10 lg:col-4">
+          <h3 class="mb-4 font-extrabold">
+            {connect.title}
+          </h3>
+          <p class="mb-10">{connect.description}</p>
+
+          {
+            connect.contact.map((c: { icon: string; label: string }) => (
+              <div class="mb-4 flex items-center">
+                <DynamicIcon
+                  icon={c.icon}
+                  className="mr-2 rounded bg-primary p-2 text-3xl"
+                />
+                <p>{c.label}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="row g-4">
+        {
+          card.map((c: { icon: string; title: string; subtitle: string }) => (
+            <div class="col md:col-6 lg:col-4">
+              <div class="rounded-lg border-2 border-border hover:border-primary">
+                <div class="flex flex-col items-center px-4 py-5 text-center md:px-8 md:py-10">
+                  <DynamicIcon
+                    icon={c.icon}
+                    className="mb-4 rounded bg-primary p-4 text-6xl"
+                  />
+
+                  <h4 class="mb-4 font-bold">{c.title}</h4>
+
+                  <p class="mb-4 text-[18px]">{c.subtitle}</p>
+
+                  <button class="btn btn-secondary">Talk To Us</button>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

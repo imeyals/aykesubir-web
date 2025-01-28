@@ -1,0 +1,169 @@
+---
+import JobCard from "@/components/career/JobCard";
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import taxonomyFilter from "@/lib/utils/taxonomyFilter";
+import { markdownify, slugify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import { RxDividerVertical } from "react-icons/rx";
+
+export async function getStaticPaths() {
+  const allCareers = await getSinglePage("career");
+
+  const paths = allCareers.map((career) => ({
+    params: {
+      single: career.slug,
+    },
+    props: { career },
+  }));
+
+  return paths;
+}
+
+const call_to_action = await getEntry("sections", "call-to-action");
+const { sticky_header } = config.settings;
+
+const allCareers = await getSinglePage("career");
+const { career } = Astro.props;
+const { Content } = await career.render();
+const {
+  title,
+  meta_title,
+  description,
+  department,
+  details,
+  summery,
+  city,
+  duration,
+  salary,
+  image,
+} = career.data;
+
+const filterByCategories = taxonomyFilter(
+  allCareers,
+  "department",
+  slugify(department[0]),
+);
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <section class={`section bg-section ${sticky_header && "pt-32 lg:pt-56"}`}>
+    <div class="container">
+      <div class="row justify-center">
+        <article class="lg:col-10">
+          <ul class="mb-10 lg:flex">
+            {
+              title && (
+                <li class="mr-4 inline-block">
+                  <h1 set:html={markdownify(title)} class="font-extrabold" />
+                </li>
+              )
+            }
+
+            {
+              duration && (
+                <li class="flex items-center lg:px-3 lg:py-1">
+                  <p
+                    set:html={markdownify(duration)}
+                    class="text-[18px] font-medium text-dark"
+                  />
+                  <RxDividerVertical className="mx-2 text-[18px] font-medium text-dark" />
+                  <p
+                    set:html={markdownify(salary!)}
+                    class="text-[18px] font-medium text-dark"
+                  />
+                </li>
+              )
+            }
+          </ul>
+
+          {
+            details && (
+              <p set:html={markdownify(details)} class="mb-10 text-[18px]" />
+            )
+          }
+
+          {/* img */}
+          {
+            image && (
+              <div class="mb-10 flex items-center justify-center overflow-hidden rounded-2xl bg-body">
+                <Image
+                  src={image}
+                  height={1000}
+                  width={800}
+                  alt="atl img"
+                  class="py-7"
+                />
+              </div>
+            )
+          }
+          <div class="row">
+            <div class="content col-12 mb-10 lg:col">
+              <Content />
+            </div>
+            <div class="lg:col-5">
+              <div class="rounded-lg bg-primary px-6 py-10">
+                {
+                  title && (
+                    <div class="row mb-3">
+                      <p class="col-5 text-[18px] text-dark">Department:</p>
+                      <p class="col text-[18px] text-dark">{title}</p>
+                    </div>
+                  )
+                }
+                {
+                  city && (
+                    <div class="row mb-3">
+                      <p class="col-5 text-[18px] text-dark">Location:</p>
+                      <p class="col text-[18px] text-dark">{city}</p>
+                    </div>
+                  )
+                }
+                {
+                  duration && (
+                    <div class="row mb-3">
+                      <p class="col-5 text-[18px] text-dark">Type:</p>
+                      <p class="col text-[18px] text-dark">{duration}</p>
+                    </div>
+                  )
+                }
+                {
+                  salary && (
+                    <div class="row mb-3">
+                      <p class="col-5 text-[18px] text-dark">Salary:</p>
+                      <p class="col text-[18px] text-dark">{salary}</p>
+                    </div>
+                  )
+                }
+                {summery && <p class="mb-6 font-medium">{summery}</p>}
+
+                <button
+                  class="btn w-full bg-dark text-white hover:bg-section hover:text-dark"
+                >
+                  Apply For This Job
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h1 class="mb-14 font-extrabold">Similar Jobs Like This</h1>
+      <div class="row g-4">
+        {filterByCategories.slice(0, 2).map((job) => <JobCard job={job} />)}
+      </div>
+    </div>
+  </section>
+  <CallToAction call_to_action={call_to_action} />
+</Base>

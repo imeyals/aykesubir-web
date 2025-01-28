@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import { FaArrowRightLong } from "react-icons/fa6";
+
+const { usecases } = Astro.props;
+---
+
+<div class="container">
+  <div class="row g-4">
+    {
+      usecases.map((usecase: any) => (
+        <div class="col-12 md:col-6 lg:col-4">
+          <div class="outer-div h-full rounded-lg border-2 border-border">
+            <div class="flex h-full flex-col items-center justify-between p-5 text-center">
+              {usecase.data.image && (
+                <Image
+                  src={usecase.data.image}
+                  class="mx-auto"
+                  width="250"
+                  height="150"
+                  alt="banner image"
+                />
+              )}
+
+              <div class="mt-5">
+                <a
+                  href={`/usecase/${usecase.slug}`}
+                  class="h4 text-dark font-bold"
+                >
+                  {usecase.data.title}
+                </a>
+
+                <p class="font-mediums mt-5">{usecase.data.content}</p>
+                <a
+                  href={`/usecase/${usecase.slug}`}
+                  class="h6 mt-6 flex items-center justify-center font-bold text-dark hover:text-primary"
+                >
+                  Try {usecase.data.title} <FaArrowRightLong className="ml-2" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

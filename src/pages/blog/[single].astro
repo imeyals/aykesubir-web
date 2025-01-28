@@ -1,0 +1,103 @@
+---
+import BlogCard from "@/components/blog/BlogCard.astro";
+import config from "@/config/config.json";
+import Disqus from "@/helpers/Disqus";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import readingTime from "@/lib/utils/readingTime";
+import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import { Image } from "astro:assets";
+import { getEntry, type CollectionKey } from "astro:content";
+import { BsDot } from "react-icons/bs";
+
+export async function getStaticPaths() {
+  const { blog_folder } = config.settings;
+  const allposts = await getSinglePage(blog_folder as CollectionKey);
+  const paths = allposts.map((post) => ({
+    params: {
+      single: post.slug,
+    },
+    props: { post },
+  }));
+  return paths;
+}
+
+const { blog_folder } = config.settings;
+const allposts = await getSinglePage(blog_folder as CollectionKey);
+const call_to_action = await getEntry("sections", "call-to-action");
+
+const { post } = Astro.props;
+const { title, meta_title, description, image, categories } = post.data;
+const { Content } = await post.render();
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <section
+    class={`section bg-section ${
+      config.settings.sticky_header && "pt-32 lg:pt-56"
+    }`}
+  >
+    <div class="container">
+      <div class="row justify-center">
+        <article class="lg:col-10">
+          <h1 set:html={markdownify(title)} class="mb-4" />
+          <ul class="mb-10 flex items-center">
+            <li class="rounded bg-primary/25 px-3 py-1">
+              {
+                categories?.map((category: string, index: number) => (
+                  <a href={`/categories/${slugify(category)}`}>
+                    {humanize(category)}
+                    {index !== categories.length - 1 && ", "}
+                  </a>
+                ))
+              }
+            </li>
+            <li class="mx-2">
+              <BsDot className="text-xl" />
+            </li>
+            <li class="">{readingTime(post.body)}</li>
+          </ul>
+          {/* img */}
+          {
+            image && (
+              <div class="mb-10 flex items-center justify-center overflow-hidden rounded-2xl bg-body">
+                <Image
+                  src={image}
+                  height={1000}
+                  width={800}
+                  alt="alt img"
+                  class="py-7"
+                />
+              </div>
+            )
+          }
+          <div class="content mb-10">
+            <Content />
+          </div>
+          <Disqus className="mt-20" client:load />
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h1 class="mb-14 font-bold">Recent Post</h1>
+      <div class="row g-4">
+        {
+          allposts.slice(0, 3).map((posts) => (
+            <div class="md:col-6 lg:col-4">
+              <BlogCard posts={posts} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <CallToAction call_to_action={call_to_action} />
+</Base>

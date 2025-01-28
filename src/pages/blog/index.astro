@@ -1,0 +1,124 @@
+---
+import Pagination from "@/components/Pagination.astro";
+import BlogCard from "@/components/blog/BlogCard.astro";
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import readingTime from "@/lib/utils/readingTime";
+import { sortByDate } from "@/lib/utils/sortFunctions";
+import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { Image } from "astro:assets";
+import { getEntry, type CollectionKey } from "astro:content";
+import { BsDot } from "react-icons/bs";
+import { FaArrowRightLong } from "react-icons/fa6";
+
+const { blog_folder, summary_length, pagination } = config.settings;
+const call_to_action = await getEntry("sections", "call-to-action");
+
+const postIndex = await getEntry(blog_folder as CollectionKey, "-index");
+const posts = await getSinglePage(blog_folder as CollectionKey);
+const featuredPost = posts.find((post) => post.data.featured);
+const sortedPosts = sortByDate(posts);
+const totalPages: number = Math.ceil(posts.length / pagination);
+const currentPosts = sortedPosts.slice(0, pagination);
+---
+
+<Base
+  title={postIndex.data.title}
+  meta_title={postIndex.data.meta_title}
+  image={postIndex.data.image}
+  description={postIndex.data.description}
+>
+  <PageHeader title={postIndex.data.title} />
+  <section class="section bg-section">
+    <div class="container">
+      {
+        /* only one post can be shown as featured post. if multiple featured post is found, only the first one will be shown*/
+      }
+      {
+        featuredPost && (
+          <>
+            <h1 class="mb-14 text-center font-extrabold">Featured Post</h1>
+            <div class="row items-center justify-center">
+              <div class="overflow-hidden lg:col-6">
+                <div class="flex h-full items-center justify-center rounded-lg bg-body p-5">
+                  {featuredPost.data.image && (
+                    <Image
+                      class=""
+                      src={featuredPost.data.image}
+                      width={468}
+                      height={318}
+                      alt={""}
+                    />
+                  )}
+                </div>
+              </div>
+              <div class="p-6 lg:col-5">
+                <ul class="mb-4 flex items-center">
+                  <li class="rounded bg-primary/25 px-3 py-1">
+                    {featuredPost.data.categories?.map(
+                      (category: string, index: number) => (
+                        <a
+                          href={`/categories/${slugify(category)}`}
+                          class="text-[12px] font-semibold"
+                        >
+                          {humanize(category)}
+                          {index !== featuredPost.data.categories.length - 1 &&
+                            ", "}
+                        </a>
+                      )
+                    )}
+                  </li>
+                  <li class="mx-3">
+                    <BsDot className="text-xl font-semibold" />
+                  </li>
+                  <li class="text-[12px] font-semibold">
+                    {readingTime(featuredPost.body)}
+                  </li>
+                </ul>
+                <a
+                  href={`/${blog_folder}/${featuredPost.slug}`}
+                  class="h3 leading-tight mb-3 font-extrabold text-dark"
+                >
+                  {featuredPost.data.title}
+                </a>
+
+                <p class="mb-6 text-[18px]">
+                  {plainify(featuredPost.body.slice(0, Number(summary_length)))}
+                </p>
+                <a
+                  href={`/${blog_folder}/${featuredPost.slug}`}
+                  class="flex items-center font-bold text-dark hover:text-primary"
+                >
+                  Read More <FaArrowRightLong className="ml-2" />
+                </a>
+              </div>
+            </div>
+          </>
+        )
+      }
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h1 class="mb-14 text-center font-extrabold">Recent Post</h1>
+      <div class="row g-4 mb-10">
+        {
+          currentPosts.map((posts) => (
+            <div class="md:col-6 lg:col-4">
+              <BlogCard posts={posts} />
+            </div>
+          ))
+        }
+      </div>
+      <Pagination
+        section={blog_folder}
+        currentPage={1}
+        totalPages={totalPages}
+      />
+    </div>
+  </section>
+  <CallToAction call_to_action={call_to_action} />
+</Base>

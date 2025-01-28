@@ -1,0 +1,39 @@
+---
+import type { CollectionKey } from "astro:content";
+import { getSinglePage } from "./contentParser.astro";
+import { slugify } from "./utils/textConverter";
+
+// get all taxonomies from frontmatter
+export const getTaxonomy = async (
+  collectionName: CollectionKey,
+  name: string,
+) => {
+  const singlePages = await getSinglePage(collectionName);
+  const taxonomyPages = singlePages.map((page: any) => page.data[name]);
+  let taxonomies: string[] = [];
+  for (let i = 0; i < taxonomyPages.length; i++) {
+    const categoryArray = taxonomyPages[i];
+    for (let j = 0; j < categoryArray.length; j++) {
+      taxonomies.push(slugify(categoryArray[j]));
+    }
+  }
+  const taxonomy = [...new Set(taxonomies)];
+  return taxonomy;
+};
+
+export const getAllTaxonomy = async (
+  collectionName: CollectionKey,
+  name: string,
+) => {
+  const singlePages = await getSinglePage(collectionName);
+  const taxonomyPages = singlePages.map((page: any) => page.data[name]);
+  let taxonomies: string[] = [];
+  for (let i = 0; i < taxonomyPages.length; i++) {
+    const categoryArray = taxonomyPages[i];
+    for (let j = 0; j < categoryArray.length; j++) {
+      taxonomies.push(slugify(categoryArray[j]));
+    }
+  }
+  return taxonomies;
+};
+---

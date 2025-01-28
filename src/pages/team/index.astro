@@ -1,0 +1,27 @@
+---
+import Team from "@/components/team/Team.astro";
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry } from "astro:content";
+
+const call_to_action = await getEntry("sections", "call-to-action");
+const teamIndex = await getEntry("team", "-index");
+const { title, meta_title, description, members } = teamIndex.data;
+---
+
+<Base title={title} meta_title={meta_title} description={description}>
+  <PageHeader title="Our Team" />
+
+  <section class="section bg-section pb-0">
+    <div class="container">
+      <div class="mb-14 text-center lg:px-52">
+        <h1 class="mb-4 font-extrabold" set:html={markdownify(title)} />
+        <p class="mb-6 text-[18px]" set:html={markdownify(description)} />
+      </div>
+    </div>
+    <Team members={members} />
+  </section>
+  <CallToAction call_to_action={call_to_action} />
+</Base>

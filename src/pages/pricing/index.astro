@@ -1,0 +1,87 @@
+---
+import PricingPlan from "@/components/pricing/PricingPlan";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry } from "astro:content";
+
+const call_to_action = await getEntry("sections", "call-to-action");
+const pricingIndex = await getEntry("pricing", "-index");
+const { title, meta_title, description, compare, plans } = pricingIndex.data;
+---
+
+<Base title={title} meta_title={meta_title} description={description}>
+  <PageHeader title="Pricing Plans" />
+
+  <section class="section bg-section pb-0">
+    <div class="container">
+      <div class="mb-14 text-center lg:px-52">
+        <h1 class="mb-4 font-extrabold" set:html={markdownify(title)} />
+        <p class="mb-6 text-[18px]" set:html={markdownify(description)} />
+      </div>
+    </div>
+    <PricingPlan plans={plans} client:load />
+
+    <div class="container mt-28">
+      <div class="text-center lg:mb-8 lg:px-52">
+        <h1 class="mb-4" set:html={markdownify(compare.title)} />
+        <p class="mb-10 text-[18px]" set:html={markdownify(compare.content)} />
+      </div>
+      <div class="content">
+        <table class="mb-0 border-collapse">
+          <thead class="hidden lg:table-header-group">
+            <tr>
+              {
+                compare.plans.map((plan, index: number) => (
+                  <th class={`${index === 0 ? "" : "text-center"}`}>
+                    <h4 class="font-bold">{plan.name}</h4>
+                  </th>
+                ))
+              }
+            </tr>
+          </thead>
+          <tbody>
+            {
+              compare.features.map((feature) => (
+                <tr>
+                  {feature.name.map(
+                    (availability: { available: unknown }, index: number) => (
+                      <td data-label={compare.plans[index].name}>
+                        {index > 0 ? (
+                          <DynamicIcon
+                            icon={availability.available ? "FaCheck" : "FaX"}
+                            className={`text-base font-black ${
+                              availability.available
+                                ? "text-dark"
+                                : "text-red-500"
+                            }`}
+                          />
+                        ) : (
+                          <h5>{availability.available}</h5>
+                        )}
+                      </td>
+                    ),
+                  )}
+                </tr>
+              ))
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              {
+                compare.buttons.map((button, index: number) => (
+                  <td data-label={compare.plans[index].name}>
+                    {index !== 0 ? <button>{button.name}</button> : ""}
+                  </td>
+                ))
+              }
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+  <CallToAction call_to_action={call_to_action} />
+</Base>

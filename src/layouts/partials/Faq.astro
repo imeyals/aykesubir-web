@@ -1,0 +1,16 @@
+---
+import Accordions from "@/helpers/Accordions";
+import { markdownify } from "@/lib/utils/textConverter";
+import { getEntry } from "astro:content";
+const faq = await getEntry("sections", "faq");
+---
+
+<section class="section bg-white">
+  <div class="container">
+    <div class="text-center lg:mb-8 lg:px-52">
+      <h1 class="mb-4" set:html={markdownify(faq.data.title)} />
+      <p class="mb-14 text-[18px]" set:html={markdownify(faq.data.subtitle)} />
+    </div>
+    <Accordions accordions={faq.data.faqs} client:load />
+  </div>
+</section>

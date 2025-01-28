@@ -1,0 +1,31 @@
+---
+import UseCaseCard from "@/components/home/UseCaseCard.astro";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry } from "astro:content";
+
+const usecaseIndex = await getEntry("usecase", "-index");
+const usecases = await getSinglePage("usecase");
+---
+
+<Base
+  title={usecaseIndex.data.title}
+  meta_title={usecaseIndex.data.meta_title}
+  description={usecaseIndex.data.description}
+>
+  <PageHeader title="Use Cases" />
+  <section class="section bg-section">
+    <div class="container">
+      <div class="text-center lg:mb-14 lg:px-52">
+        <h1 class="mb-4" set:html={markdownify(usecaseIndex.data.title)} />
+        <p
+          class="mb-10 text-[18px]"
+          set:html={markdownify(usecaseIndex.data.content ?? "")}
+        />
+      </div>
+    </div>
+    <UseCaseCard usecases={usecases} />
+  </section>
+</Base>

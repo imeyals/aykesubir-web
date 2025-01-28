@@ -1,0 +1,217 @@
+---
+import ClientLogoSlider from "@/components/home/ClientLogoSlider.astro";
+import FeaturesTab from "@/components/home/FeaturesTab";
+import StepsTab from "@/components/home/StepsTab";
+import UseCaseCard from "@/components/home/UseCaseCard.astro";
+import PricingPlan from "@/components/pricing/PricingPlan";
+import BannerSVG from "@/components/svg/BannerSVG.astro";
+import config from "@/config/config.json";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import Faq from "@/partials/Faq.astro";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { RiDoubleQuotesL } from "react-icons/ri";
+
+const { sticky_header } = config.settings;
+
+// home
+const { data } = await getEntry("homepage", "-index");
+
+const { banner, logo, feature, step, review } = data;
+
+// usecase
+const usecaseIndex = await getEntry("usecase", "-index");
+const usecases = await getSinglePage("usecase");
+
+// pricing
+const pricing = await getEntry("pricing", "-index");
+
+// call to action
+const call_to_action = await getEntry("sections", "call-to-action");
+---
+
+<Base>
+  <!-- Banner -->
+  <section class={`section ${sticky_header && "pt-32 lg:pt-52"}`}>
+    <div class="container">
+      <div class="row justify-center">
+        <div class="col-12 order-2 lg:col lg:order-1">
+          <h1
+            set:html={markdownify(banner.title)}
+            class="underline-svg mb-6 font-black"
+          />
+          <p set:html={markdownify(banner.content)} class="mb-10 text-xl" />
+          <div class="flex flex-col md:flex-row">
+            {
+              banner.buttons.map(
+                (
+                  btn: { enable: boolean; label: string; link: string },
+                  index: number,
+                ) =>
+                  btn.enable && (
+                    <a
+                      class={`btn mb-2  text-dark md:m-0 md:mr-5 ${
+                        index / 2 === 0 ? "btn-primary" : "btn-outline-primary"
+                      }`}
+                      href={btn.link}
+                    >
+                      {btn.label}
+                    </a>
+                  ),
+              )
+            }
+          </div>
+        </div>
+        <div class="col-12 order-1 lg:col lg:order-2 max-lg:mb-6">
+          <div class="mx-auto mt-4">
+            {
+              banner.image ? (
+                <Image
+                  class=""
+                  src={banner.image}
+                  width="598"
+                  height="416"
+                  alt="banner image"
+                />
+              ) : (
+                // banner svg image
+                <BannerSVG />
+              )
+            }
+          </div>
+        </div>
+      </div>
+      {logo.enable && <ClientLogoSlider logo={logo} />}
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="bg-section py-20">
+    <div class="container">
+      {/* top */}
+      <div class="text-center lg:mb-14 lg:px-52">
+        <h1 class="mb-4" set:html={markdownify(feature.title)} />
+        <p
+          class="mb-10 text-xl font-normal"
+          set:html={markdownify(feature.content ?? "")}
+        />
+      </div>
+
+      <FeaturesTab features={feature.features} client:load />
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="py-20">
+    <div class="container">
+      {/* top */}
+      <div class="text-center lg:mb-14 lg:px-52">
+        <h1
+          class="mb-4 text-5xl leading-[1.2]"
+          set:html={markdownify(step.title)}
+        />
+        <p
+          class="mb-10 text-xl font-normal"
+          set:html={markdownify(step.content ?? "")}
+        />
+      </div>
+
+      <StepsTab tabs={step.steps} client:load />
+    </div>
+  </section>
+
+  <!-- UseCase -->
+  <section class="bg-section py-20">
+    <div class="container">
+      {/* top */}
+      <div class="text-center lg:mb-14 lg:px-52">
+        <h1
+          class="mb-4 text-5xl leading-[1.2]"
+          set:html={markdownify(usecaseIndex.data.title)}
+        />
+        <p
+          class="mb-10 text-xl font-normal"
+          set:html={markdownify(usecaseIndex.data.content ?? "")}
+        />
+      </div>
+    </div>
+    <UseCaseCard usecases={usecases.slice(0, 6)} />
+    <div class="flex justify-center mt-14">
+      <a
+        href={"/usecase"}
+        class="btn btn-primary flex items-center text-[18px]"
+      >
+        See All <FaArrowRightLong className="ml-2" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="py-20">
+    <div class="container">
+      {/* top */}
+      <div class="text-center lg:mb-14 lg:px-52">
+        <h1
+          class="mb-4 text-5xl leading-[1.2]"
+          set:html={markdownify(review.title)}
+        />
+        <p
+          class="mb-10 text-xl font-normal"
+          set:html={markdownify(review.content ?? "")}
+        />
+      </div>
+
+      {/* bottom */}
+      <div class="masonry sm:masonry-sm md:masonry-md">
+        {
+          review.reviews.map((review) => (
+            <div class="break-inside mb-6 rounded-lg border border-border bg-section">
+              <div class="px-6 py-8">
+                <RiDoubleQuotesL className="text-5xl text-primary" />
+                <p class="mb-6 font-medium">{review.review}</p>
+                <div class="flex items-center">
+                  <DynamicIcon
+                    icon={review.image}
+                    className="mr-2 rounded-full text-5xl lg:mr-4"
+                  />
+                  <div>
+                    <h4 class="text-2xl font-bold">{review.user}</h4>
+                    <small class="font-mediums">{review.designation}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="bg-section py-20">
+    <div class="container">
+      {/* top */}
+      <div class="text-center lg:mb-8 lg:px-52">
+        <h1
+          class="mb-4 text-5xl leading-[1.2]"
+          set:html={markdownify(pricing.data.title)}
+        />
+        <p
+          class="mb-10 text-[18px]"
+          set:html={markdownify(pricing.data.content ?? "")}
+        />
+      </div>
+    </div>
+    <PricingPlan plans={pricing.data.plans} client:load />
+  </section>
+
+  <!-- FAQ -->
+  <Faq />
+
+  <CallToAction call_to_action={call_to_action} className="pt-0" />
+</Base>

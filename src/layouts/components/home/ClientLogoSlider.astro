@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import { type CollectionEntry } from "astro:content";
+type Logos = CollectionEntry<"homepage">["data"]["logo"]["logos"];
+
+const { logo } = Astro.props;
+const { logos }: { logos: Logos } = logo;
+---
+
+<div class="swiper clientlogo-slider">
+  <div class="mb-12 mt-24 border-t border-border pt-12 swiper-wrapper">
+    {
+      logos &&
+        logos.map((item) => (
+          <div class="swiper-slide">
+            <Image height={32} width={109} src={item.logo} alt={item.name} />
+          </div>
+        ))
+    }
+  </div>
+</div>
+
+<script>
+  import { Swiper } from "swiper";
+  import "swiper/css";
+  import { Autoplay } from "swiper/modules";
+
+  // astro:page-load event is fired when the page is loaded
+  document.addEventListener("astro:page-load", () => {
+    new Swiper(".clientlogo-slider", {
+      modules: [Autoplay],
+      spaceBetween: 80,
+      loop: true,
+      centeredSlides: true,
+      speed: 3000,
+      allowTouchMove: false,
+
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        425: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 4,
+        },
+        992: {
+          slidesPerView: 6,
+        },
+      },
+    });
+  });
+</script>
