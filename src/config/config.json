@@ -1,7 +1,7 @@
 {
   "site": {
-    "title": "Visionex",
-    "base_url": "https://visionex-astro.vercel.app",
+    "title": "Aykesubir",
+    "base_url": "https://aykesubir-web.vercel.app/",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
@@ -20,7 +20,7 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Designed And Developed By [Themefisher](https://themefisher.com/)"
+    "copyright": "All Rights reserved to Aykesubir"
   },
 
   "disqus": {
