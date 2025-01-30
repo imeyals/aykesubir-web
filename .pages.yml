@@ -1,1 +1,3 @@
-media: public
+media:
+  input: public
+  output: media
