@@ -5,47 +5,12 @@
       "url": "/"
     },
     {
-      "name": "About us",
-      "url": "/about"
-    },
-    {
-      "name": "Use case",
-      "url": "/usecase"
-    },
-    {
       "name": "Blog",
       "url": "/blog"
     },
     {
-      "name": "Pricing",
-      "url": "/pricing"
-    },
-    {
-      "name": "Pages",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "Our Team",
-          "url": "/team"
-        },
-        {
-          "name": "Career",
-          "url": "/career"
-        },
-        {
-          "name": "Contact us",
-          "url": "/contact"
-        },
-        {
-          "name": "FAQ",
-          "url": "/faq"
-        },
-        {
-          "name": "404 Page",
-          "url": "/404"
-        }
-      ]
+      "name": "About us",
+      "url": "/about"
     }
   ],
   "footer": [

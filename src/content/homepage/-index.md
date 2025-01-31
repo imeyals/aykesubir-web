@@ -1,14 +1,14 @@
 ---
 banner:
-  title: "Unlock The Power <br /> **of Writing** AI Create Content Faster"
-  content: "Generate dynamic & compelling content effortlessly with our AI writing tool. Whether you need blog social media captions, or product descriptions."
+  title: "Built on Science.<br />**Driven by Strategy.**<br />Designed for Impact."
+  content: "Aykesubir is a strategic research firm specializing in fintech innovation. We provide deep technical insights, and market analysis to help financial institutions navigate the future of finance with confidence."
   # image: "/images/banner.svg"
   buttons:
     - enable: true
-      label: "Start For Free"
+      label: "Contact Us"
       link: "https://github.com/zeon-studio/"
     - enable: true
-      label: "Browse Feature"
+      label: "Our Clients"
       link: "https://github.com/zeon-studio/"
 
 logo:
