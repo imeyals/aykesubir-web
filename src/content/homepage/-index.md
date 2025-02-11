@@ -40,21 +40,21 @@ logo:
 
 feature:
   enable: true
-  title: "Generate content using AI"
-  content: "Please provide me with more information about the type of content you're looking for, such as a topic a brief description, or any specific requirements you have in mind"
+  title: "Driving Fintech Innovation"
+  content: "We help corporations stay ahead in fintech by providing strategic research, product expertise, and security solutions to drive innovation and prevent market setbacks"
   features:
-    - label: "Generates quality contents"
-      details: "The more specific you are with your request, the better I can assist you in generating relevant and well-written content."
+    - label: "Fintech Product Strategy"
+      details: "We help fintech companies define products, choose technologies, and manage development for market success."
       logo: "FaPenToSquare"
       image: "/images/features/feature_1.png"
 
-    - label: "Provides Useful Suggestions"
-      details: " This can be through books, online courses, workshops, or even learning from experienced individuals in your field."
+    - label: "Investment & Market Due Diligence"
+      details: "We provide deep research and insights to guide smarter seed and M&A investment decisions."
       logo: "FaHandPointer"
       image: "/images/features/feature_2.png"
 
-    - label: "Improves Products Productivity"
-      details: "Implement automation in the manufacturing process to reduce human errors, increase output speed & decrease production time."
+    - label: "Privacy & Custody Solutions"
+      details: "We design secure, privacy-focused, and blockchain-based solutions for financial institutions and fintech firms."
       logo: "FaChartLine"
       image: "/images/features/feature_3.png"
 

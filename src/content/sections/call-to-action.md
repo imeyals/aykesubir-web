@@ -1,10 +1,10 @@
 ---
 enable: true
-title: "Ready to meet your personal AI writing assistant?"
+title: "Don't fall behind on Fintech!"
 # image: "/images/call-to-action.png"
-description: "Take action now to make a difference! Whether it's supporting a cause you're passionate about"
+description: "Your one stop shop for product strategy advice, innovation consulting, and investment due diligence.<b  r/>Contact us today to future-proof your business."
 button:
   enable: true
-  label: "Start writing for free"
+  label: "How can we help?"
   link: "https://github.com/tfzayed/astro-visionex"
 ---
