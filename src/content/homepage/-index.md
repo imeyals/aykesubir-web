@@ -6,10 +6,7 @@ banner:
   buttons:
     - enable: true
       label: "Contact Us"
-      link: "https://github.com/zeon-studio/"
-    - enable: true
-      label: "Our Clients"
-      link: "https://github.com/zeon-studio/"
+      link: "/contact"
 
 logo:
   enable: true
