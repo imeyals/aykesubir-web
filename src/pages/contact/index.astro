@@ -81,30 +81,4 @@ const { title, meta_title, description, connect, card } = contactIndex.data;
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="row g-4">
-        {
-          card.map((c: { icon: string; title: string; subtitle: string }) => (
-            <div class="col md:col-6 lg:col-4">
-              <div class="rounded-lg border-2 border-border hover:border-primary">
-                <div class="flex flex-col items-center px-4 py-5 text-center md:px-8 md:py-10">
-                  <DynamicIcon
-                    icon={c.icon}
-                    className="mb-4 rounded bg-primary p-4 text-6xl"
-                  />
-
-                  <h4 class="mb-4 font-bold">{c.title}</h4>
-
-                  <p class="mb-4 text-[18px]">{c.subtitle}</p>
-
-                  <button class="btn btn-secondary">Talk To Us</button>
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
 </Base>

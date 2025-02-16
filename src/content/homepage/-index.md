@@ -14,28 +14,31 @@ banner:
 logo:
   enable: true
   logos:
-    - name: "airtable"
+    - name: "eToro"
       logo: "/images/clientlogos/1.png"
 
-    - name: "dropbox"
+    - name: "Elbit Systems"
+      logo: "/images/clientlogos/elbit.png"
+
+    - name: "Benson Oak Ventures"
       logo: "/images/clientlogos/2.png"
 
-    - name: "google"
+    - name: "Department of Defense - The State of Israel"
       logo: "/images/clientlogos/3.png"
 
-    - name: "instagram"
+    - name: "Sirin Labs"
       logo: "/images/clientlogos/4.png"
 
-    - name: "hashicorp"
+    - name: "Xinova"
       logo: "/images/clientlogos/5.png"
 
-    - name: "microsoft"
+    - name: "2key"
       logo: "/images/clientlogos/6.png"
 
-    - name: "youtube"
+    - name: "NKB Investments"
       logo: "/images/clientlogos/7.png"
 
-    - name: "coinbase"
+    - name: "Unibright"
       logo: "/images/clientlogos/8.png"
 
 feature:
