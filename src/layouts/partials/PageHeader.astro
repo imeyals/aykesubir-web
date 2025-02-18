@@ -8,12 +8,5 @@ const { title = "" }: { title?: string } = Astro.props;
 ---
 
 <section class={`${sticky_header && "pt-24"}`}>
-  <div class="text-center">
-    <div class="py-20">
-      <h1 class="underline-svg lg:text-[56px]">
-        <strong>{humanize(title)}</strong>
-      </h1>
-      <Breadcrumbs className="mt-4" />
-    </div>
-  </div>
+
 </section>
