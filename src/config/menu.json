@@ -5,7 +5,11 @@
       "url": "/"
     },
     {
-      "name": "Blog",
+      "name": "Industries",
+      "url": "/blog"
+    },
+    {
+      "name": "Capabilities",
       "url": "/blog"
     },
     {
