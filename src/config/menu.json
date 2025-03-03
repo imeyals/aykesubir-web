@@ -6,11 +6,57 @@
     },
     {
       "name": "Industries",
-      "url": "/blog"
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Payments",
+          "url": "/blog/post-1"
+        },
+        {
+          "name": "Custody",
+          "url": "/blog/post-2"
+        },
+        {
+          "name": "AML",
+          "url": "/blog/post-3"
+        },
+        {
+          "name": "Crypto",
+          "url": "/blog/post-4"
+        }
+      ]
     },
     {
       "name": "Capabilities",
-      "url": "/blog"
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Strategy",
+          "url": "/blog/post-5"
+        },
+        {
+          "name": "VC",
+          "url": "/blog/post-6"
+        },
+        {
+          "name": "M&A",
+          "url": "/blog/post-7"
+        },
+        {
+          "name": "Private Equity",
+          "url": "/blog/post-8"
+        },
+        {
+          "name": "Transformation",
+          "url": "/blog/post-9"
+        },
+        {
+          "name": "Innovation",
+          "url": "/blog/post-10"
+        }
+      ]
     },
     {
       "name": "About us",
