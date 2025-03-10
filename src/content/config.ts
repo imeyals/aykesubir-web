@@ -103,6 +103,20 @@ const blogCollection = defineCollection({
   }),
 });
 
+// Indsutry collection schema
+const industryCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string().optional(),
+    description: z.string().optional(),
+    date: z.date().optional(),
+    image: z.string().optional(),
+    categories: z.array(z.string()).default(["all"]),
+    featured: z.boolean().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 // Career collections schema
 const careerCollection = defineCollection({
   schema: z.object({
@@ -270,6 +284,7 @@ export const collections = {
   homepage: homepageCollection,
   usecase: usecaseCollection,
   blog: blogCollection,
+  indsutry: industryCollection,
   team: teamSchema,
   career: careerCollection,
   pricing: pricingSchema,

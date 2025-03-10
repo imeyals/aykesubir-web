@@ -15,7 +15,8 @@
     "sticky_header": true,
     "pagination": 6,
     "summary_length": 120,
-    "blog_folder": "blog"
+    "blog_folder": "blog",
+    "industry_folder": "industry"
   },
 
   "params": {

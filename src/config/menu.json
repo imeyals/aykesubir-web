@@ -11,19 +11,19 @@
       "children": [
         {
           "name": "Payments",
-          "url": "/blog/post-1"
+          "url": "/industry/post-1"
         },
         {
           "name": "Custody",
-          "url": "/blog/post-2"
+          "url": "/industry/post-2"
         },
         {
           "name": "AML",
-          "url": "/blog/post-3"
+          "url": "/industry/post-3"
         },
         {
           "name": "Crypto",
-          "url": "/blog/post-4"
+          "url": "/industry/post-4"
         }
       ]
     },
