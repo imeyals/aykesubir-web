@@ -13,15 +13,13 @@ draft: false
 
 Financial crime is becoming more sophisticated, and global regulations are evolving rapidly. Companies must continuously adapt their AML frameworks to stay compliant, mitigate risks, and avoid costly penalties. Aykesubir helps businesses navigate this shifting landscape with advanced strategies and cutting-edge technology.
 
-### How we are helping defence agencies and enterprises with AML
-
 - Customer Due Diligence (CDD) – Automate identity verification, risk assessment, and aggregates data from multiple sources to create risk profiles.
 - Suspicious Activity Reporting (SAR) – AI automates SAR generation, reducing manual effort and improving response times.
 - Sanctions Screening – AI-powered tools improve sanctions list matching accuracy, minimizing false positives while ensuring compliance.
 - Network Analytics for Risk Detection – AI reveals hidden links between entities and transactions, uncovering laundering schemes otherwise undetected.
 - Customer Risk-Rating Model (CRR) Optimization – Reducing misclassification errors and focusing AML resources on high-risk cases.
 
-> We turn AML compliance from a regulatory burden into a competitive advantage—enhancing security, streamlining operations, and building trust in every financial transaction.
+> We turn AML compliance from a regulatory burden into a competitive advantage,  enhancing security, streamlining operations, and building trust in every financial transaction.
 
 ### AML Digital Transformation in Law Enforcement
 

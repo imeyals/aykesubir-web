@@ -13,10 +13,6 @@ draft: false
 
 As we enter 2025, digital asset custody is undergoing a major transformation. The rapid growth of institutional adoption, regulatory advancements, and technological innovation are reshaping how businesses secure and manage digital assets. At Aykesubir, we empower institutions with cutting-edge custody solutions that ensure security, compliance, and operational efficiency, helping them navigate an increasingly complex financial ecosystem.
 
-### How We Can Support Key Custody Solutions
-
-We help institutions integrate custody strategies that address the following key areas:
-
 - Tokenization and Real-World Asset Custody – Secure handling, trading, and governance of tokenized assets such as real estate, art, and commodities.
 - Automation and AI for Operational Efficiency – AI-driven solutions for smart contract audits, transaction monitoring, and compliance automation.
 - DeFi and Web3 Integration – Secure access to DeFi staking, NFT custody, and cross-chain asset management.
