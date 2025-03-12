@@ -16,7 +16,8 @@
     "pagination": 6,
     "summary_length": 120,
     "blog_folder": "blog",
-    "industry_folder": "industry"
+    "industry_folder": "industry",
+    "capability_folder": "capability"
   },
 
   "params": {

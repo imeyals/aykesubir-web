@@ -34,27 +34,27 @@
       "children": [
         {
           "name": "Strategy",
-          "url": "/blog/post-5"
+          "url": "/capability/post-1"
         },
         {
           "name": "VC",
-          "url": "/blog/post-6"
+          "url": "/capability/post-2"
         },
         {
           "name": "M&A",
-          "url": "/blog/post-7"
+          "url": "/capability/post-3"
         },
         {
           "name": "Private Equity",
-          "url": "/blog/post-8"
+          "url": "/capability/post-4"
         },
         {
           "name": "Transformation",
-          "url": "/blog/post-9"
+          "url": "/capability/post-5"
         },
         {
           "name": "Innovation",
-          "url": "/blog/post-10"
+          "url": "/capability/post-6"
         }
       ]
     },

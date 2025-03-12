@@ -117,6 +117,20 @@ const industryCollection = defineCollection({
   }),
 });
 
+// Capability collection schema
+const capabilityCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string().optional(),
+    description: z.string().optional(),
+    date: z.date().optional(),
+    image: z.string().optional(),
+    categories: z.array(z.string()).default(["all"]),
+    featured: z.boolean().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 // Career collections schema
 const careerCollection = defineCollection({
   schema: z.object({
