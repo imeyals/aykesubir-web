@@ -299,6 +299,7 @@ export const collections = {
   usecase: usecaseCollection,
   blog: blogCollection,
   indsutry: industryCollection,
+  capability: capabilityCollection,
   team: teamSchema,
   career: careerCollection,
   pricing: pricingSchema,

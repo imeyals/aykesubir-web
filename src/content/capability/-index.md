@@ -1,5 +1,5 @@
 ---
-title: "Indsutries"
+title: "Capabilities"
 meta_title: ""
-description: "this is meta description"
+description: "Capabilities"
 ---

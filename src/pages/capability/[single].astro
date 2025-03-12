@@ -12,8 +12,8 @@ import { getEntry, type CollectionKey } from "astro:content";
 import { BsDot } from "react-icons/bs";
 
 export async function getStaticPaths() {
-  const { industry_folder } = config.settings;
-  const allposts = await getSinglePage(industry_folder as CollectionKey);
+  const { capability_folder } = config.settings;
+  const allposts = await getSinglePage(capability_folder as CollectionKey);
   const paths = allposts.map((post) => ({
     params: {
       single: post.slug,
@@ -23,8 +23,8 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { industry_folder } = config.settings;
-const allposts = await getSinglePage(industry_folder as CollectionKey);
+const { capability_folder } = config.settings;
+const allposts = await getSinglePage(capability_folder as CollectionKey);
 const call_to_action = await getEntry("sections", "call-to-action");
 
 const { post } = Astro.props;
