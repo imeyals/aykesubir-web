@@ -7,5 +7,5 @@ description: "Your one stop shop for product strategy advice, innovation consult
 button:
   enable: true
   label: "How can we help?"
-  link: "https://github.com/tfzayed/astro-visionex"
+  link: "/contact"
 ---
