@@ -18,6 +18,7 @@ const {
   title,
   meta_title,
   description,
+  description2,
   image,
   reviews,
   achievement,
@@ -59,157 +60,9 @@ const careers = await getSinglePage("career");
         <div class="md:col-10 lg:col-6">
           <h1 class="mb-4 font-extrabold" set:html={markdownify(title)} />
           <p class="mb-6 text-[18px]" set:html={markdownify(description)} />
-          <div class="mb-10 flex items-center">
-            <div
-              class="mr-4 flex rounded-sm bg-gray-100 px-4 py-2 text-yellow-400"
-            >
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-            </div>
-            <h6 class="font-medium" set:html={markdownify(reviews)} />
-          </div>
-          <button class="btn btn-primary"> Start writing for free</button>
+          <p class="mb-6 text-[18px]" set:html={markdownify(description2)} />
         </div>
       </div>
     </div>
   </section>
-
-  <!-- second section -->
-  {
-    achievement.enable && (
-      <section class="section">
-        <div class="container">
-          <div class="row items-center justify-center">
-            <div class="col-10 mb-8 lg:col-6">
-              <h1
-                class="mb-4 font-extrabold"
-                set:html={markdownify(achievement.title)}
-              />
-              <p
-                class="mb-6 text-[18px]"
-                set:html={markdownify(achievement.description)}
-              />
-              <button class="btn btn-primary">Start writing for free</button>
-            </div>
-
-            <div class="md:col-10 lg:col-6 ">
-              <div class="row g-4 items-center justify-center">
-                <div class="col-10 md:col-6">
-                  <div class="mx-auto flex flex-col items-center justify-center rounded-lg bg-footer px-10 py-6 text-white">
-                    <Counter end={20} duration={1.5} title="M+" client:load />
-
-                    <p class="text-white">Active Users</p>
-                  </div>
-                </div>
-
-                <div class="col-10 md:col-6">
-                  <div class="mx-auto flex flex-col items-center justify-center rounded-lg bg-footer px-10 py-6 text-white">
-                    <Counter end={50} duration={1.5} title="K+" client:load />
-                    <p class="text-white">Daily User</p>
-                  </div>
-                </div>
-
-                <div class="col-10 md:col-6">
-                  <div class="mx-auto flex flex-col items-center justify-center rounded-lg bg-footer px-10 py-6 text-white">
-                    <Counter end={200} duration={1.5} title="+" client:load />
-                    <p class="text-white">Team Members</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  <!-- third section -->
-  {
-    value.enable && (
-      <section class="section bg-section">
-        <div class="container">
-          <div class="mb-14 text-center lg:px-52">
-            <h1 class="mb-4 font-bold" set:html={markdownify(value.title)} />
-            <p
-              class="mb-6 text-[18px]"
-              set:html={markdownify(value.description)}
-            />
-          </div>
-
-          <div class="row justify-center g-4">
-            {value.values.map((singleValue) => (
-              <div class="col-12 lg:col-6">
-                <div class="h-full rounded-lg border-2 border-border p-7 hover:border-primary">
-                  <div class="mb-4 flex flex-col items-center md:flex-row">
-                    <DynamicIcon
-                      icon={singleValue.logo}
-                      className="mr-6 rounded-md bg-primary p-4 text-6xl text-dark"
-                    />
-                    <h3
-                      set:html={markdownify(singleValue.name)}
-                      class="font-extrabold"
-                    />
-                  </div>
-                  <div>
-                    <p set:html={markdownify(singleValue.description)} />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  <!-- fourth section -->
-  <section class="section">
-    <div class="container">
-      <div class="mb-14 text-center lg:px-52">
-        <h1 class="mb-4 font-bold" set:html={markdownify(team.title)} />
-        <p class="mb-6 text-[18px]" set:html={markdownify(team.description)} />
-      </div>
-    </div>
-    <Team members={teamIndex.data.members.slice(0, 8)} />
-  </section>
-
-  <!-- fifth section -->
-  <section class="section bg-section">
-    <div class="container">
-      <div class="mb-14 text-center lg:px-52">
-        <h1 class="mb-4 font-bold" set:html={markdownify(job.title)} />
-        <p class="mb-6 text-[18px]" set:html={markdownify(job.description)} />
-      </div>
-      <div class="row g-4">
-        {careers.slice(0, 4).map((job) => <JobCard job={job} />)}
-      </div>
-    </div>
-  </section>
-
-  <!-- gallery section -->
-  {
-    gallery.enable && (
-      <section class="section">
-        <div class="container">
-          <div class="mb-14 text-center lg:px-52">
-            <h1 class="mb-4 font-bold" set:html={markdownify(gallery.title)} />
-            <p
-              class="mb-6 text-[18px]"
-              set:html={markdownify(gallery.description)}
-            />
-          </div>
-
-          <PhotoAlbum
-            layout="columns"
-            photos={gallery.image as Photo[]}
-            columns={3}
-            client:load
-          />
-        </div>
-      </section>
-    )
-  }
 </Base>

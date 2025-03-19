@@ -61,6 +61,56 @@
   ],
   "footer": [
     {
+      "name": "Industries",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Payments",
+          "url": "/industry/post-1"
+        },
+        {
+          "name": "Custody",
+          "url": "/industry/post-2"
+        },
+        {
+          "name": "AML",
+          "url": "/industry/post-3"
+        },
+        {
+          "name": "Blockchain",
+          "url": "/industry/post-4"
+        }
+      ]
+    },
+    {
+      "name": "Capabilities",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Strategy",
+          "url": "/capability/post-1"
+        },
+        {
+          "name": "VC",
+          "url": "/capability/post-2"
+        },
+        {
+          "name": "M&A",
+          "url": "/capability/post-3"
+        },
+        {
+          "name": "Private Equity",
+          "url": "/capability/post-4"
+        },
+        {
+          "name": "Transformation",
+          "url": "/capability/post-5"
+        }
+      ]
+    },
+    {
       "name": "Company",
       "url": "",
       "hasChildren": true,
@@ -68,10 +118,6 @@
         {
           "name": "About us",
           "url": "/about"
-        },
-        {
-          "name": "Careers",
-          "url": "/careers"
         },
         {
           "name": "Contact",

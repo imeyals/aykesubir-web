@@ -1,7 +1,8 @@
 ---
-title: "Unlocking The Power of Insert Trending Technology Cloudcore Leads The Way!"
+title: "Helping clients navigate the evolving financial landscape"
 meta_title: "About Us"
-description: "Unlocking the Power of 'Insert Trending Technology' and 'Cloudcore Leads The Way!' are both phrases that seem to be placeholders or placeholders for"
+description: "We are a boutique consulting firm dedicated to helping enterprises harness the power of fintech to drive innovation, efficiency, and growth. Founded by experts in financial technology anad strategy, we guide businesses in adopting disruptive solutions in Payments, Custody, Identity, Blockchain, and AML."
+description2: "With a global reach spanning five continents, we have worked with enterprises, investors, and financial institutions to navigate complex fintech ecosystems. Whether identifying high-potential fintech investments, optimizing financial operations, or future-proofing business models, we deliver strategies that turn challenges into opportunities anywhere in the world."
 image: "/images/about/start.png"
 rating: 5
 reviews: "Based on 10,000+ reviews on"

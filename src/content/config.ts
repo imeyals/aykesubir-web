@@ -239,6 +239,7 @@ const aboutSchema = defineCollection({
     title: z.string(),
     meta_title: z.string(),
     description: z.string(),
+    description2: z.string(),
     image: z.string(),
     rating: z.number(),
     reviews: z.string(),
