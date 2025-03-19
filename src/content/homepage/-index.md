@@ -45,7 +45,7 @@ feature:
   features:
     - label: "Fintech Product Strategy"
       details: "We help fintech companies define products, choose technologies, and manage development for market success."
-      logo: "FaPenToSquare"
+      logo: "FaChartLine"
       image: "/images/features/feature_1.png"
 
     - label: "Investment & Market Due Diligence"
@@ -55,7 +55,7 @@ feature:
 
     - label: "Privacy & Custody Solutions"
       details: "We design secure, privacy-focused, and blockchain-based solutions for financial institutions and fintech firms."
-      logo: "FaChartLine"
+      logo: "FaPenToSquare"
       image: "/images/features/feature_3.png"
 
 step:
