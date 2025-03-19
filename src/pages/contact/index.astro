@@ -18,7 +18,8 @@ const { title, meta_title, description, connect, card } = contactIndex.data;
       <div class="row g-4 lg:items-center lg:justify-between">
         {/* left side */}
         <div class="col-10 lg:col-6">
-          <form action={params.contact_form_action} method="POST" class="">
+          <form method="POST" id="form" class="">
+            <input type="hidden" name="access_key" value="33911f28-8ff6-4ad6-beab-a0873ede260a">
             <div class="mb-10">
               <label for="name" class="form-label">
                 Name <span class="text-red-500">*</span>
@@ -52,10 +53,55 @@ const { title, meta_title, description, connect, card } = contactIndex.data;
                 name="message"
                 class="form-input w-full border-0 border-b-2 border-border focus:border-primary focus:ring-transparent"
                 placeholder="Write here your details message..."
-                rows={4}></textarea>
+                rows={4} required></textarea>
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
             </div>
             <button type="submit" class="btn btn-primary"> Send message</button>
+            <div id="result"></div>
           </form>
+
+          <script is:inline>
+            const form = document.getElementById('form');
+            const result = document.getElementById('result');
+            
+            form.addEventListener('submit', function(e) {
+                const formData = new FormData(form);
+                e.preventDefault();
+            
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
+            
+                result.innerHTML = "Please wait..."
+            
+                fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: json
+                    })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status == 200) {
+                            result.innerHTML = json.message;
+                        } else {
+                            console.log(response);
+                            result.innerHTML = json.message;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        result.innerHTML = "Something went wrong!";
+                    })
+                    .then(function() {
+                        form.reset();
+                        setTimeout(() => {
+                            result.style.display = "none";
+                        }, 3000);
+                    });
+            });
+            </script>
         </div>
 
         {/* right side */}
