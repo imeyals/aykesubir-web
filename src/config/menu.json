@@ -59,9 +59,20 @@
       ]
     },
     {
-      "name": "About us",
-      "url": "/about"
-    }
+      "name": "About Us",
+      "url": "/about",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "About us",
+          "url": "/about"
+        },
+        {
+          "name": "Contact",
+          "url": "/contact"
+        }
+      ]
+  }
   ],
   "footer": [
     {
