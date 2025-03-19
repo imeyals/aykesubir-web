@@ -1,6 +1,6 @@
 ---
 banner:
-  title: "Helping Visionaries<br /> **Unlock Growth** with<br /> Financial Innovation"
+  title: "Helping Visionaries **Unlock Growth** with Financial Innovation"
   content: "Aykesubir is a strategic research firm specializing in fintech innovation. We provide deep technical insights, and market analysis to help financial institutions navigate the future of finance with confidence."
   # image: "/images/banner.svg"
   buttons:
