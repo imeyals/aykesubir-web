@@ -7,16 +7,18 @@ const { logo } = Astro.props;
 const { logos }: { logos: Logos } = logo;
 ---
 
-<div class="swiper clientlogo-slider">
-  <div class="mb-12 mt-24 border-t border-border pt-12 swiper-wrapper">
-    {
-      logos &&
-        logos.map((item) => (
-          <div class="swiper-slide">
-            <Image height={32} width={109} src={item.logo} alt={item.name} />
-          </div>
-        ))
-    }
+<div class="mt-24 pt-12 border-t border-border">
+  <div class="swiper clientlogo-slider">
+    <div class="mb-12 swiper-wrapper">
+      {
+        logos &&
+          logos.map((item) => (
+            <div class="swiper-slide">
+              <Image height={32} width={109} src={item.logo} alt={item.name} />
+            </div>
+          ))
+      }
+    </div>
   </div>
 </div>
 

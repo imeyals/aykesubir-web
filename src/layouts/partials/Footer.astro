@@ -16,14 +16,13 @@ const { copyright } = config.params;
         {/* logo */}
         <div class="mb-10 lg:mb-8">
           <Image
-            src="/images/aksLogoWhite.png"
+            src="/images/aksLogoWhite.png.png"
             class="mb-4"
             width={144}
             height={40}
             alt="banner image"
           />
           <p class="mb-4 lg:mb-8 text-white">
-            
           </p>
           <div>
             <h5 class="mb-4 text-white">Follow Us</h5>
@@ -55,7 +54,7 @@ const { copyright } = config.params;
         </div>
       </div>
     </div>
-    <div class="border-t border-light py-7">
+    <div class="border-t border-light/25 py-7">
       <div class="container text-center">
         <p class="copyright" set:html={markdownify(copyright)} />
       </div>
