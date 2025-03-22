@@ -1,7 +1,7 @@
 ---
 banner:
   title: "**Unlock Growth** with Financial Innovation"
-  content: "Aykesubir is a strategic research firm specializing in fintech innovation. We provide deep technical insights, and market analysis to help financial institutions navigate the future of finance with confidence."
+  content: "Aykesubir is a strategy consulting firm specializing in fintech innovation. We provide deep technical insights, and market analysis to help financial institutions navigate the future of finance with confidence."
   # image: "/images/banner.svg"
   buttons:
     - enable: true
@@ -41,20 +41,21 @@ logo:
 feature:
   enable: true
   title: "Driving Fintech Innovation"
-  content: "We help corporations stay ahead in fintech by providing strategic research, product expertise, and security solutions to drive innovation and prevent market setbacks"
+  content: "Stay ahead in fintech by providing strategic research, product expertise, and security solutions to drive innovation and prevent market setbacks"
   features:
     - label: "Fintech Product Strategy"
-      details: "We help fintech companies define products, choose technologies, and manage development for market success."
+      details: "Product and Monetization Strategy ensuring market fit, competitive advantage, and scalable growth"
       logo: "FaChartLine"
       image: "/images/features/feature_1.png"
 
-    - label: "Investment & Market Due Diligence"
-      details: "We provide deep research and insights to guide smarter seed and M&A investment decisions."
+    - label: "Investment Due Diligence"
+      details: "Deep market analysis and technical insights to guide smarter seed and M&A investment decisions."
       logo: "FaHandPointer"
       image: "/images/features/feature_2.png"
 
     - label: "Privacy & Custody Solutions"
-      details: "We design secure, privacy-focused, and blockchain-based solutions for financial institutions and fintech firms."
+      details: "We design secure, privacy-focused
+       solutions for financial institutions and fintech firms."
       logo: "FaPenToSquare"
       image: "/images/features/feature_3.png"
 
