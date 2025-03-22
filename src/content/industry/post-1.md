@@ -13,7 +13,7 @@ draft: false
 
 Driven by rising customer expectations, the payments industry is undergoing a major transformation. While transactions are becoming faster and seamless, the complexity of the ecosystem continues to grow.
 
-Aykesubir works with businesses to modernize their payment infrastructure, navigate regulatory challenges, and integrate emerging technologies. Our expertise spans digital wallets, embedded finance, cross-border transactions, and beyond.
+Aykesubir partners with businesses to modernize their infrastructure, navigate regulatory challenges, and integrate emerging technologies. Our expertise spans digital wallets, embedded finance, cross-border transactions, and beyond.
 
 Let us support you with:
 - **Optimizing Payment Infrastructure** – Implementing real-time payments (RTP), ISO 20022 messaging, and Payment-as-a-Service (PaaS) models for seamless transactions.
